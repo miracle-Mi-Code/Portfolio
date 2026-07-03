@@ -255,7 +255,7 @@ function App() {
           <div className="flex items-center justify-center rounded-3xl border border-slate-800 bg-slate-900/70 p-4 shadow-2xl shadow-indigo-950/40 backdrop-blur">
             <div className="overflow-hidden rounded-full border border-slate-700 bg-slate-950/80 p-2">
               <img
-                src="https://res-console.cloudinary.com/dbi20dnwa/thumbnails/transform/v1/image/upload/Y19maWxsLGhfMjAwLHdfMjAw/v1/bWlfbTB5Z2J3/template_primary"
+                src="./src/mi.jpg"
                 alt="Miracle Ibrahim"
                 className="h-[360px] w-full max-w-[320px] rounded-full object-cover"
               />
