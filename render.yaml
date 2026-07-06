@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: portfolio-monoport
+    env: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: PORT
+        value: 5000
+      - key: MONGO_URI
+        sync: false
