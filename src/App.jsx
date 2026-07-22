@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import miImage from './mi.jpg';
 
 const projects = [
   {
@@ -24,6 +25,14 @@ const projects = [
     tags: ['Next.js', 'Framer Motion', 'Sanity'],
     githubLink: 'https://github.com/miracle-Mi-Code/new-grade/',
     liveLink: 'https://grade-calculator-iota-six.vercel.app/',
+  },
+  {
+    id: 4,
+    title: ' MarketMeld Africa',
+    description: 'Originally designed to scale for over 50,000 monthly active users, its development focuses on performance, transactional reliability, and seamless inventory management.',
+    tags: ['React.js', 'Node.js', 'Tailwind CSS', 'RESTful API', 'MongoDB'],
+    githubLink: 'https://github.com/miracle-Mi-Code/capstone-main/',
+    liveLink: 'https://miracle-market.onrender.com/',
   },
 ];
 
@@ -106,6 +115,11 @@ function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(true);
 
+  const themeText = isDarkMode ? 'text-white' : 'text-slate-900';
+  const themeTextSecondary = isDarkMode ? 'text-slate-400' : 'text-slate-600';
+  const themeTextMuted = isDarkMode ? 'text-slate-300' : 'text-slate-700';
+  const themeInputText = isDarkMode ? 'text-slate-100' : 'text-slate-900';
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -176,7 +190,7 @@ function App() {
             </button>
 
             <a
-              href="https://miracleibrahim.cv/"
+              href="https://ibrahimmiracle.cv/"
               target="_blank"
               rel="noreferrer"
               className={`hidden rounded-full border px-4 py-2 text-sm font-medium transition sm:inline-flex ${isDarkMode ? 'border-indigo-500/40 bg-indigo-500/10 text-indigo-300 hover:bg-indigo-500/20' : 'border-indigo-500/30 bg-indigo-500/10 text-indigo-600 hover:bg-indigo-500/20'}`}
@@ -204,7 +218,7 @@ function App() {
               <a href="#projects" className={`transition ${isDarkMode ? 'text-slate-300 hover:text-white' : 'text-slate-600 hover:text-slate-900'}`} onClick={() => setIsMenuOpen(false)}>Projects</a>
               <a href="#contact" className={`transition ${isDarkMode ? 'text-slate-300 hover:text-white' : 'text-slate-600 hover:text-slate-900'}`} onClick={() => setIsMenuOpen(false)}>Contact</a>
               <a
-                href="https://miracleibrahim.cv/"
+                href="https://ibrahimmiracle.cv/"
                 target="_blank"
                 rel="noreferrer"
                 className={`inline-flex rounded-full border px-3 py-2 font-medium ${isDarkMode ? 'border-indigo-500/40 bg-indigo-500/10 text-indigo-300' : 'border-indigo-500/30 bg-indigo-500/10 text-indigo-600'}`}
@@ -232,7 +246,7 @@ function App() {
                 <br />
                 Full-Stack Developer
               </h1>
-              <p className="max-w-2xl text-lg leading-8 text-slate-400">
+              <p className={`max-w-2xl text-lg leading-8 ${themeTextSecondary}`}>
                 I craft high-performance web experiences with a strong focus on design systems, clean architecture, and accessible interfaces.
               </p>
             </div>
@@ -245,7 +259,7 @@ function App() {
               </a>
               <a
                 href="#contact"
-                className="rounded-full border border-slate-700 px-6 py-3 text-center font-semibold text-slate-200 transition hover:-translate-y-1 hover:border-slate-500"
+                className={`rounded-full border border-slate-700 px-6 py-3 text-center font-semibold transition hover:-translate-y-1 hover:border-slate-500 ${isDarkMode ? 'text-slate-200' : 'text-slate-700'}`}
               >
                 Contact Me
               </a>
@@ -255,7 +269,7 @@ function App() {
           <div className="flex items-center justify-center rounded-3xl border border-slate-800 bg-slate-900/70 p-4 shadow-2xl shadow-indigo-950/40 backdrop-blur">
             <div className="overflow-hidden rounded-full border border-slate-700 bg-slate-950/80 p-2">
               <img
-                src="./src/mi.jpg"
+                src={miImage}
                 alt="Miracle Ibrahim"
                 className="h-[360px] w-full max-w-[320px] rounded-full object-cover"
               />
@@ -267,9 +281,9 @@ function App() {
           <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
             <div>
               <p className="text-sm font-semibold uppercase tracking-[0.3em] text-indigo-400">About</p>
-              <h2 className="mt-3 text-3xl font-semibold text-white sm:text-4xl">Building thoughtful digital products that feel effortless.</h2>
+              <h2 className={`mt-3 text-3xl font-semibold sm:text-4xl ${themeText}`}>Building thoughtful digital products that feel effortless.</h2>
             </div>
-            <p className="text-lg leading-8 text-slate-400">
+            <p className={`text-lg leading-8 ${themeTextSecondary}`}>
               I’m a developer who combines product thinking with modern frontend engineering. From concept sketches to deployed experiences, I enjoy creating interfaces that are both visually striking and technically robust.
             </p>
           </div>
@@ -279,7 +293,7 @@ function App() {
           <div className="mb-10 flex items-end justify-between gap-4">
             <div>
               <p className="text-sm font-semibold uppercase tracking-[0.3em] text-emerald-400">Projects</p>
-              <h2 className="mt-3 text-3xl font-semibold text-white sm:text-4xl">Selected work</h2>
+              <h2 className={`mt-3 text-3xl font-semibold sm:text-4xl ${themeText}`}>Selected work</h2>
             </div>
           </div>
           <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
@@ -291,11 +305,11 @@ function App() {
                 <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500 to-emerald-400 text-lg font-bold text-white">
                   {project.id}
                 </div>
-                <h3 className="text-xl font-semibold text-white">{project.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-slate-400">{project.description}</p>
+                <h3 className={`text-xl font-semibold ${themeText}`}>{project.title}</h3>
+                <p className={`mt-3 text-sm leading-7 ${themeTextSecondary}`}>{project.description}</p>
                 <div className="mt-5 flex flex-wrap gap-2">
                   {project.tags.map((tag) => (
-                    <span key={tag} className="rounded-full border border-slate-700 bg-slate-800/70 px-3 py-1 text-xs font-medium text-slate-300">
+                    <span key={tag} className={`rounded-full border border-slate-700 bg-slate-800/70 px-3 py-1 text-xs font-medium ${themeTextMuted}`}>
                       {tag}
                     </span>
                   ))}
@@ -316,14 +330,14 @@ function App() {
         <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
           <div className="rounded-3xl border border-slate-800 bg-slate-900/60 p-8 shadow-xl shadow-slate-950/20">
             <p className="text-sm font-semibold uppercase tracking-[0.3em] text-indigo-400">Skills</p>
-            <h2 className="mt-3 text-3xl font-semibold text-white sm:text-4xl">Core capabilities</h2>
+            <h2 className={`mt-3 text-3xl font-semibold sm:text-4xl ${themeText}`}>Core capabilities</h2>
             <div className="mt-8 grid gap-6 lg:grid-cols-3">
               {skillGroups.map((group) => (
-                <div key={group.title} className="rounded-2xl border border-slate-800 bg-slate-950/70 p-5">
-                  <h3 className="text-lg font-semibold text-white">{group.title}</h3>
+                <div key={group.title} className={`rounded-2xl border p-5 ${isDarkMode ? 'border-slate-800 bg-slate-950/70' : 'border-slate-200 bg-white/90'}`}>
+                  <h3 className={`text-lg font-semibold ${themeText}`}>{group.title}</h3>
                   <div className="mt-4 flex flex-wrap gap-2">
                     {group.skills.map((skill) => (
-                      <span key={skill} className="rounded-full bg-slate-800 px-3 py-2 text-sm text-slate-300">
+                      <span key={skill} className={`rounded-full px-3 py-2 text-sm ${isDarkMode ? 'bg-slate-800 text-slate-300' : 'bg-slate-100 text-slate-700'}`}>
                         {skill}
                       </span>
                     ))}
@@ -338,8 +352,8 @@ function App() {
           <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
             <div>
               <p className="text-sm font-semibold uppercase tracking-[0.3em] text-emerald-400">Contact</p>
-              <h2 className="mt-3 text-3xl font-semibold text-white sm:text-4xl">Let&apos;s build something great together.</h2>
-              <p className="mt-4 max-w-xl text-lg leading-8 text-slate-400">
+              <h2 className={`mt-3 text-3xl font-semibold sm:text-4xl ${themeText}`}>Let&apos;s build something great together.</h2>
+              <p className={`mt-4 max-w-xl text-lg leading-8 ${themeTextSecondary}`}>
                 Have a project idea or a role you think I’d be a fit for? Send a note and I’ll get back to you soon.
               </p>
             </div>
@@ -347,37 +361,37 @@ function App() {
             <form onSubmit={handleSubmit} className="rounded-3xl border border-slate-800 bg-slate-900/70 p-6 shadow-2xl shadow-slate-950/30">
               <div className="space-y-4">
                 <div>
-                  <label className="mb-2 block text-sm font-medium text-slate-300" htmlFor="name">Name</label>
+                  <label className={`mb-2 block text-sm font-medium ${themeTextMuted}`} htmlFor="name">Name</label>
                   <input
                     id="name"
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full rounded-2xl border border-slate-700 bg-slate-950/80 px-4 py-3 text-slate-100 outline-none transition focus:border-indigo-500"
+                    className={`w-full rounded-2xl border border-slate-700 bg-slate-950/80 px-4 py-3 outline-none transition focus:border-indigo-500 ${themeInputText}`}
                     placeholder="Your name"
                   />
                 </div>
                 <div>
-                  <label className="mb-2 block text-sm font-medium text-slate-300" htmlFor="email">Email</label>
+                  <label className={`mb-2 block text-sm font-medium ${themeTextMuted}`} htmlFor="email">Email</label>
                   <input
                     id="email"
                     name="email"
                     type="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full rounded-2xl border border-slate-700 bg-slate-950/80 px-4 py-3 text-slate-100 outline-none transition focus:border-indigo-500"
+                    className={`w-full rounded-2xl border border-slate-700 bg-slate-950/80 px-4 py-3 outline-none transition focus:border-indigo-500 ${themeInputText}`}
                     placeholder="you@example.com"
                   />
                 </div>
                 <div>
-                  <label className="mb-2 block text-sm font-medium text-slate-300" htmlFor="message">Message</label>
+                  <label className={`mb-2 block text-sm font-medium ${themeTextMuted}`} htmlFor="message">Message</label>
                   <textarea
                     id="message"
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
                     rows="5"
-                    className="w-full rounded-2xl border border-slate-700 bg-slate-950/80 px-4 py-3 text-slate-100 outline-none transition focus:border-indigo-500"
+                    className={`w-full rounded-2xl border border-slate-700 bg-slate-950/80 px-4 py-3 outline-none transition focus:border-indigo-500 ${themeInputText}`}
                     placeholder="Tell me about your project"
                   />
                 </div>
@@ -393,11 +407,10 @@ function App() {
 
               {status.message ? (
                 <div
-                  className={`mt-4 rounded-2xl border px-4 py-3 text-sm ${
-                    status.type === 'success'
-                      ? 'border-emerald-500/30 bg-emerald-500/10 text-emerald-300'
-                      : 'border-rose-500/30 bg-rose-500/10 text-rose-300'
-                  }`}
+                  className={`mt-4 rounded-2xl border px-4 py-3 text-sm ${status.type === 'success'
+                    ? 'border-emerald-500/30 bg-emerald-500/10 text-emerald-300'
+                    : 'border-rose-500/30 bg-rose-500/10 text-rose-300'
+                    }`}
                 >
                   {status.message}
                 </div>
@@ -409,7 +422,7 @@ function App() {
 
       <footer className="border-t border-slate-800/80 bg-slate-950/80">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-4 py-8 sm:px-6 lg:flex-row lg:px-8">
-          <p className="text-sm text-slate-400">© 2026 Miracle Ibrahim. All rights reserved.</p>
+          <p className={`text-sm ${themeTextSecondary}`}>© 2026 Miracle Ibrahim. All rights reserved.</p>
           <div className="flex items-center gap-3">
             {socialLinks.map((social) => (
               <a
@@ -418,7 +431,7 @@ function App() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label={social.label}
-                className="rounded-full border border-slate-700 bg-slate-900/70 p-3 text-slate-300 transition hover:-translate-y-1 hover:border-indigo-500 hover:text-white"
+                className={`rounded-full border border-slate-700 bg-slate-900/70 p-3 transition hover:-translate-y-1 hover:border-indigo-500 ${isDarkMode ? 'text-slate-300 hover:text-white' : 'text-slate-700 hover:text-slate-900'}`}
               >
                 {social.icon}
               </a>
