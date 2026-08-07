@@ -34,6 +34,31 @@ const projects = [
     githubLink: 'https://github.com/miracle-Mi-Code/capstone-main/',
     liveLink: 'https://miracle-market.onrender.com/',
   },
+  {
+    id: 5,
+    title: 'Portal Hub',
+    description: 'A blazing-fast storefront experience with modern cart flows and polished UI patterns.',
+    tags: ['HTML', 'CSS', 'JavaScript'],
+    githubLink: 'https://github.com/miracle-Mi-Code/fastPortal/',
+    liveLink: 'https://fast-portal-six.vercel.app/',
+  },
+  {
+    id: 6,
+    title: 'Ambrose Loaded',
+    description: 'A storefront experience with modern polished UI patterns.',
+    tags: ['React', 'Tailwind CSS', 'Node.js', 'Express', 'MongoDB'],
+    githubLink: 'https://github.com/miracle-Mi-Code/AmbroseMedia/',
+    liveLink: 'https://ambroseloaded.onrender.com/',
+  },
+  // {
+  //   id: 7,
+  //   title: 'NaijaPrep Quiz',
+  //   description: 'A storefront experience with modern polished UI patterns.',
+  //   tags: ['React', 'Tailwind CSS', 'Node.js', 'Express', 'MongoDB'],
+  //   githubLink: 'https://github.com/miracle-Mi-Code/#/',
+  //   liveLink: 'https://e-learning-app-tju.onrender.com/',
+  // },
+
 ];
 
 const skillGroups = [
@@ -167,11 +192,11 @@ function App() {
   };
 
   return (
-    <div className={`min-h-screen ${isDarkMode ? 'bg-slate-950 text-slate-100' : 'bg-slate-50 text-slate-900'}`}>
-      <header className={`sticky top-0 z-50 border-b backdrop-blur-xl ${isDarkMode ? 'border-slate-800/80 bg-slate-950/80' : 'border-slate-200 bg-white/80'}`}>
+    <div className={`min-h-screen transition-colors duration-300 ${isDarkMode ? 'bg-slate-950 text-slate-100' : 'bg-slate-50 text-slate-900'}`}>
+      <header className={`sticky top-0 z-50 border-b backdrop-blur-xl transition-colors duration-300 ${isDarkMode ? 'border-slate-800/80 bg-slate-950/80' : 'border-slate-200/80 bg-white/80'}`}>
         <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
           <a href="#home" className={`text-lg font-semibold tracking-wide ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
-            M<span className="text-indigo-400">I</span>
+            M<span className="text-indigo-500">I</span>
           </a>
 
           <div className="hidden items-center gap-6 text-sm md:flex">
@@ -184,7 +209,8 @@ function App() {
             <button
               type="button"
               onClick={() => setIsDarkMode((prev) => !prev)}
-              className={`rounded-full border px-3 py-2 text-sm transition ${isDarkMode ? 'border-slate-700 bg-slate-900 text-slate-200 hover:border-slate-500' : 'border-slate-300 bg-slate-100 text-slate-700 hover:border-slate-400'}`}
+              className={`rounded-full border px-3 py-2 text-sm transition ${isDarkMode ? 'border-slate-700 bg-slate-900 text-slate-200 hover:border-slate-500' : 'border-slate-300 bg-slate-100 text-slate-700 hover:border-slate-400 hover:bg-slate-200'}`}
+              aria-label="Toggle theme mode"
             >
               {isDarkMode ? '☀️' : '🌙'}
             </button>
@@ -193,7 +219,7 @@ function App() {
               href="https://ibrahimmiracle.cv/"
               target="_blank"
               rel="noreferrer"
-              className={`hidden rounded-full border px-4 py-2 text-sm font-medium transition sm:inline-flex ${isDarkMode ? 'border-indigo-500/40 bg-indigo-500/10 text-indigo-300 hover:bg-indigo-500/20' : 'border-indigo-500/30 bg-indigo-500/10 text-indigo-600 hover:bg-indigo-500/20'}`}
+              className={`hidden rounded-full border px-4 py-2 text-sm font-medium transition sm:inline-flex ${isDarkMode ? 'border-indigo-500/40 bg-indigo-500/10 text-indigo-300 hover:bg-indigo-500/20' : 'border-indigo-600/30 bg-indigo-50 text-indigo-600 hover:bg-indigo-100'}`}
             >
               Resume
             </a>
@@ -221,7 +247,7 @@ function App() {
                 href="https://ibrahimmiracle.cv/"
                 target="_blank"
                 rel="noreferrer"
-                className={`inline-flex rounded-full border px-3 py-2 font-medium ${isDarkMode ? 'border-indigo-500/40 bg-indigo-500/10 text-indigo-300' : 'border-indigo-500/30 bg-indigo-500/10 text-indigo-600'}`}
+                className={`inline-flex rounded-full border px-3 py-2 font-medium ${isDarkMode ? 'border-indigo-500/40 bg-indigo-500/10 text-indigo-300' : 'border-indigo-600/30 bg-indigo-50 text-indigo-600'}`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 Resume
@@ -234,13 +260,13 @@ function App() {
       <main id="home">
         <section className="mx-auto grid max-w-6xl gap-12 px-4 py-20 sm:px-6 lg:grid-cols-[1.2fr_0.8fr] lg:px-8 lg:py-28">
           <div className="space-y-8">
-            <div className="inline-flex items-center rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-1 text-sm text-emerald-300">
+            <div className={`inline-flex items-center rounded-full border px-3 py-1 text-sm font-medium ${isDarkMode ? 'border-emerald-400/30 bg-emerald-400/10 text-emerald-300' : 'border-emerald-600/30 bg-emerald-50 text-emerald-700'}`}>
               Available for freelance opportunities
             </div>
             <div className="space-y-4">
               <h1 className="text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
                 Hi, I&apos;m{' '}
-                <span className="bg-gradient-to-r from-indigo-400 via-sky-400 to-emerald-400 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-indigo-500 via-sky-500 to-emerald-500 bg-clip-text text-transparent">
                   Miracle I.
                 </span>
                 <br />
@@ -253,21 +279,21 @@ function App() {
             <div className="flex flex-col gap-3 sm:flex-row">
               <a
                 href="#projects"
-                className="rounded-full bg-indigo-500 px-6 py-3 text-center font-semibold text-white transition hover:-translate-y-1 hover:bg-indigo-400"
+                className="rounded-full bg-indigo-600 px-6 py-3 text-center font-semibold text-white shadow-md transition hover:-translate-y-1 hover:bg-indigo-500"
               >
                 View My Work
               </a>
               <a
                 href="#contact"
-                className={`rounded-full border border-slate-700 px-6 py-3 text-center font-semibold transition hover:-translate-y-1 hover:border-slate-500 ${isDarkMode ? 'text-slate-200' : 'text-slate-700'}`}
+                className={`rounded-full border px-6 py-3 text-center font-semibold transition hover:-translate-y-1 ${isDarkMode ? 'border-slate-700 bg-slate-900/50 text-slate-200 hover:border-slate-500' : 'border-slate-300 bg-white text-slate-700 hover:border-slate-400 hover:bg-slate-100'}`}
               >
                 Contact Me
               </a>
             </div>
           </div>
 
-          <div className="flex items-center justify-center rounded-3xl border border-slate-800 bg-slate-900/70 p-4 shadow-2xl shadow-indigo-950/40 backdrop-blur">
-            <div className="overflow-hidden rounded-full border border-slate-700 bg-slate-950/80 p-2">
+          <div className={`flex items-center justify-center rounded-3xl border p-4 shadow-2xl backdrop-blur transition-colors ${isDarkMode ? 'border-slate-800 bg-slate-900/70 shadow-indigo-950/40' : 'border-slate-200 bg-white shadow-slate-200/80'}`}>
+            <div className={`overflow-hidden rounded-full border p-2 ${isDarkMode ? 'border-slate-700 bg-slate-950/80' : 'border-slate-200 bg-slate-100'}`}>
               <img
                 src={miImage}
                 alt="Miracle Ibrahim"
@@ -280,7 +306,7 @@ function App() {
         <section id="about" className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
           <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-indigo-400">About</p>
+              <p className={`text-sm font-semibold uppercase tracking-[0.3em] ${isDarkMode ? 'text-indigo-400' : 'text-indigo-600'}`}>About</p>
               <h2 className={`mt-3 text-3xl font-semibold sm:text-4xl ${themeText}`}>Building thoughtful digital products that feel effortless.</h2>
             </div>
             <p className={`text-lg leading-8 ${themeTextSecondary}`}>
@@ -292,7 +318,7 @@ function App() {
         <section id="projects" className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
           <div className="mb-10 flex items-end justify-between gap-4">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-emerald-400">Projects</p>
+              <p className={`text-sm font-semibold uppercase tracking-[0.3em] ${isDarkMode ? 'text-emerald-400' : 'text-emerald-600'}`}>Projects</p>
               <h2 className={`mt-3 text-3xl font-semibold sm:text-4xl ${themeText}`}>Selected work</h2>
             </div>
           </div>
@@ -300,25 +326,25 @@ function App() {
             {projects.map((project) => (
               <article
                 key={project.id}
-                className="group rounded-3xl border border-slate-800 bg-slate-900/60 p-6 shadow-lg shadow-slate-950/30 transition duration-300 hover:-translate-y-2 hover:border-indigo-500/40"
+                className={`group rounded-3xl border p-6 shadow-lg transition duration-300 hover:-translate-y-2 ${isDarkMode ? 'border-slate-800 bg-slate-900/60 shadow-slate-950/30 hover:border-indigo-500/40' : 'border-slate-200 bg-white shadow-slate-200/60 hover:border-indigo-300 hover:shadow-md'}`}
               >
-                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500 to-emerald-400 text-lg font-bold text-white">
+                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500 to-emerald-500 text-lg font-bold text-white shadow-sm">
                   {project.id}
                 </div>
                 <h3 className={`text-xl font-semibold ${themeText}`}>{project.title}</h3>
                 <p className={`mt-3 text-sm leading-7 ${themeTextSecondary}`}>{project.description}</p>
                 <div className="mt-5 flex flex-wrap gap-2">
                   {project.tags.map((tag) => (
-                    <span key={tag} className={`rounded-full border border-slate-700 bg-slate-800/70 px-3 py-1 text-xs font-medium ${themeTextMuted}`}>
+                    <span key={tag} className={`rounded-full border px-3 py-1 text-xs font-medium ${isDarkMode ? 'border-slate-700 bg-slate-800/70 text-slate-300' : 'border-slate-200 bg-slate-100 text-slate-700'}`}>
                       {tag}
                     </span>
                   ))}
                 </div>
-                <div className="mt-6 flex gap-3 text-sm">
-                  <a href={project.githubLink} className="font-medium text-indigo-400 transition hover:text-indigo-300">
+                <div className="mt-6 flex gap-4 text-sm">
+                  <a href={project.githubLink} className={`font-semibold transition ${isDarkMode ? 'text-indigo-400 hover:text-indigo-300' : 'text-indigo-600 hover:text-indigo-700'}`}>
                     GitHub
                   </a>
-                  <a href={project.liveLink} className="font-medium text-emerald-400 transition hover:text-emerald-300">
+                  <a href={project.liveLink} className={`font-semibold transition ${isDarkMode ? 'text-emerald-400 hover:text-emerald-300' : 'text-emerald-600 hover:text-emerald-700'}`}>
                     Live Demo
                   </a>
                 </div>
@@ -328,16 +354,16 @@ function App() {
         </section>
 
         <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
-          <div className="rounded-3xl border border-slate-800 bg-slate-900/60 p-8 shadow-xl shadow-slate-950/20">
-            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-indigo-400">Skills</p>
+          <div className={`rounded-3xl border p-8 shadow-xl ${isDarkMode ? 'border-slate-800 bg-slate-900/60 shadow-slate-950/20' : 'border-slate-200 bg-white shadow-slate-200/60'}`}>
+            <p className={`text-sm font-semibold uppercase tracking-[0.3em] ${isDarkMode ? 'text-indigo-400' : 'text-indigo-600'}`}>Skills</p>
             <h2 className={`mt-3 text-3xl font-semibold sm:text-4xl ${themeText}`}>Core capabilities</h2>
             <div className="mt-8 grid gap-6 lg:grid-cols-3">
               {skillGroups.map((group) => (
-                <div key={group.title} className={`rounded-2xl border p-5 ${isDarkMode ? 'border-slate-800 bg-slate-950/70' : 'border-slate-200 bg-white/90'}`}>
+                <div key={group.title} className={`rounded-2xl border p-5 ${isDarkMode ? 'border-slate-800 bg-slate-950/70' : 'border-slate-200 bg-slate-50'}`}>
                   <h3 className={`text-lg font-semibold ${themeText}`}>{group.title}</h3>
                   <div className="mt-4 flex flex-wrap gap-2">
                     {group.skills.map((skill) => (
-                      <span key={skill} className={`rounded-full px-3 py-2 text-sm ${isDarkMode ? 'bg-slate-800 text-slate-300' : 'bg-slate-100 text-slate-700'}`}>
+                      <span key={skill} className={`rounded-full border px-3 py-2 text-sm font-medium ${isDarkMode ? 'border-slate-700 bg-slate-800/70 text-slate-300' : 'border-slate-200 bg-white text-slate-700 shadow-xs'}`}>
                         {skill}
                       </span>
                     ))}
@@ -351,14 +377,14 @@ function App() {
         <section id="contact" className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
           <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-emerald-400">Contact</p>
+              <p className={`text-sm font-semibold uppercase tracking-[0.3em] ${isDarkMode ? 'text-emerald-400' : 'text-emerald-600'}`}>Contact</p>
               <h2 className={`mt-3 text-3xl font-semibold sm:text-4xl ${themeText}`}>Let&apos;s build something great together.</h2>
               <p className={`mt-4 max-w-xl text-lg leading-8 ${themeTextSecondary}`}>
                 Have a project idea or a role you think I’d be a fit for? Send a note and I’ll get back to you soon.
               </p>
             </div>
 
-            <form onSubmit={handleSubmit} className="rounded-3xl border border-slate-800 bg-slate-900/70 p-6 shadow-2xl shadow-slate-950/30">
+            <form onSubmit={handleSubmit} className={`rounded-3xl border p-6 shadow-2xl ${isDarkMode ? 'border-slate-800 bg-slate-900/70 shadow-slate-950/30' : 'border-slate-200 bg-white shadow-slate-200/60'}`}>
               <div className="space-y-4">
                 <div>
                   <label className={`mb-2 block text-sm font-medium ${themeTextMuted}`} htmlFor="name">Name</label>
@@ -367,7 +393,7 @@ function App() {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    className={`w-full rounded-2xl border border-slate-700 bg-slate-950/80 px-4 py-3 outline-none transition focus:border-indigo-500 ${themeInputText}`}
+                    className={`w-full rounded-2xl border px-4 py-3 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 ${isDarkMode ? 'border-slate-700 bg-slate-950/80 text-slate-100 placeholder-slate-500' : 'border-slate-300 bg-slate-50 text-slate-900 placeholder-slate-400'}`}
                     placeholder="Your name"
                   />
                 </div>
@@ -379,7 +405,7 @@ function App() {
                     type="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className={`w-full rounded-2xl border border-slate-700 bg-slate-950/80 px-4 py-3 outline-none transition focus:border-indigo-500 ${themeInputText}`}
+                    className={`w-full rounded-2xl border px-4 py-3 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 ${isDarkMode ? 'border-slate-700 bg-slate-950/80 text-slate-100 placeholder-slate-500' : 'border-slate-300 bg-slate-50 text-slate-900 placeholder-slate-400'}`}
                     placeholder="you@example.com"
                   />
                 </div>
@@ -391,7 +417,7 @@ function App() {
                     value={formData.message}
                     onChange={handleChange}
                     rows="5"
-                    className={`w-full rounded-2xl border border-slate-700 bg-slate-950/80 px-4 py-3 outline-none transition focus:border-indigo-500 ${themeInputText}`}
+                    className={`w-full rounded-2xl border px-4 py-3 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 ${isDarkMode ? 'border-slate-700 bg-slate-950/80 text-slate-100 placeholder-slate-500' : 'border-slate-300 bg-slate-50 text-slate-900 placeholder-slate-400'}`}
                     placeholder="Tell me about your project"
                   />
                 </div>
@@ -400,7 +426,7 @@ function App() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="mt-6 w-full rounded-full bg-gradient-to-r from-indigo-500 to-emerald-400 px-6 py-3 font-semibold text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-70"
+                className="mt-6 w-full rounded-full bg-gradient-to-r from-indigo-500 to-emerald-500 px-6 py-3 font-semibold text-white shadow-md transition hover:opacity-95 disabled:cursor-not-allowed disabled:opacity-70"
               >
                 {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>
@@ -408,8 +434,8 @@ function App() {
               {status.message ? (
                 <div
                   className={`mt-4 rounded-2xl border px-4 py-3 text-sm ${status.type === 'success'
-                    ? 'border-emerald-500/30 bg-emerald-500/10 text-emerald-300'
-                    : 'border-rose-500/30 bg-rose-500/10 text-rose-300'
+                    ? isDarkMode ? 'border-emerald-500/30 bg-emerald-500/10 text-emerald-300' : 'border-emerald-600/30 bg-emerald-50 text-emerald-800'
+                    : isDarkMode ? 'border-rose-500/30 bg-rose-500/10 text-rose-300' : 'border-rose-600/30 bg-rose-50 text-rose-800'
                     }`}
                 >
                   {status.message}
@@ -420,7 +446,7 @@ function App() {
         </section>
       </main>
 
-      <footer className="border-t border-slate-800/80 bg-slate-950/80">
+      <footer className={`border-t transition-colors ${isDarkMode ? 'border-slate-800/80 bg-slate-950/80' : 'border-slate-200 bg-white'}`}>
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-4 py-8 sm:px-6 lg:flex-row lg:px-8">
           <p className={`text-sm ${themeTextSecondary}`}>© 2026 Miracle Ibrahim. All rights reserved.</p>
           <div className="flex items-center gap-3">
@@ -431,7 +457,7 @@ function App() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label={social.label}
-                className={`rounded-full border border-slate-700 bg-slate-900/70 p-3 transition hover:-translate-y-1 hover:border-indigo-500 ${isDarkMode ? 'text-slate-300 hover:text-white' : 'text-slate-700 hover:text-slate-900'}`}
+                className={`rounded-full border p-3 transition hover:-translate-y-1 ${isDarkMode ? 'border-slate-700 bg-slate-900/70 text-slate-300 hover:border-indigo-500 hover:text-white' : 'border-slate-300 bg-slate-100 text-slate-600 hover:border-indigo-500 hover:bg-slate-200 hover:text-slate-900'}`}
               >
                 {social.icon}
               </a>
