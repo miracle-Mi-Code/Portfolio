@@ -50,14 +50,14 @@ const projects = [
     githubLink: 'https://github.com/miracle-Mi-Code/AmbroseMedia/',
     liveLink: 'https://ambroseloaded.onrender.com/',
   },
-  // {
-  //   id: 7,
-  //   title: 'NaijaPrep Quiz',
-  //   description: 'A storefront experience with modern polished UI patterns.',
-  //   tags: ['React', 'Tailwind CSS', 'Node.js', 'Express', 'MongoDB'],
-  //   githubLink: 'https://github.com/miracle-Mi-Code/#/',
-  //   liveLink: 'https://e-learning-app-tju.onrender.com/',
-  // },
+  {
+    id: 7,
+    title: 'NaijaPrep Quiz',
+    description: 'A storefront experience with modern polished UI patterns.',
+    tags: ['React', 'Tailwind CSS', 'Node.js', 'Express', 'MongoDB'],
+    githubLink: 'https://github.com/miracle-Mi-Code/NaijaPrep-Quiz',
+    liveLink: 'https://naijaprep-quiz.onrender.com/',
+  },
 
 ];
 
