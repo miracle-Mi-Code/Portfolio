@@ -58,6 +58,22 @@ const projects = [
     githubLink: 'https://github.com/miracle-Mi-Code/NaijaPrep-Quiz',
     liveLink: 'https://naijaprep-quiz.onrender.com/',
   },
+  {
+    id: 8,
+    title: 'Artisan Hub',
+    description: 'A storefront experience with modern polished UI patterns.',
+    tags: ['React', 'Tailwind CSS', 'Node.js', 'Express', 'MongoDB'],
+    githubLink: 'https://github.com/miracle-Mi-Code/peace/',
+    liveLink: 'https://artisan-booking-app.onrender.com/',
+  },
+  {
+    id: 9,
+    title: 'Chat Hub',
+    description: 'A storefront experience with modern polished UI patterns.',
+    tags: ['HTML', 'CSS', 'JavaScript', 'Node.js', 'Express', 'MongoDB'],
+    githubLink: 'https://github.com/miracle-Mi-Code/MiChat/',
+    liveLink: 'https://michat-hod0.onrender.com/',
+  },
 
 ];
 
