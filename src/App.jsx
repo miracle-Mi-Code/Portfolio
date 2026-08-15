@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import miImage from './mi.jpg';
 
 const projects = [
@@ -36,7 +36,7 @@ const projects = [
   },
   {
     id: 5,
-    title: 'Portal Hub',
+    title: 'fastPortal',
     description: 'A blazing-fast storefront experience with modern cart flows and polished UI patterns.',
     tags: ['HTML', 'CSS', 'JavaScript'],
     githubLink: 'https://github.com/miracle-Mi-Code/fastPortal/',
@@ -106,7 +106,7 @@ const socialLinks = [
   },
   {
     label: 'WhatsApp',
-    href: 'https://wa.me/2347012117736',
+    href: 'https://wa.me/2347012117736?text=HELLO%20I%27M%20MIRACLE%20MI%2C%20THANK%20YOU%20FOR%20CONTACTING%20ME%20SO%20WE%20CAN%20BUILD%20TOGETHER',
     icon: (
       <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
         <path d="M19.1 4.9A9.6 9.6 0 0 0 4.8 19l-.7 2.3 2.3-.7a9.6 9.6 0 0 0 13.7-8.7 9.6 9.6 0 0 0-1-4.9ZM12 20.2A7.9 7.9 0 0 1 6.7 6.7a7.9 7.9 0 0 1 10.5 10.5A7.9 7.9 0 0 1 12 20.2Zm4.3-6.1c-.2-.1-1.2-.6-1.4-.7-.2-.1-.3-.1-.4.1-.1.2-.5.7-.7.8-.1.2-.3.2-.5.1a6.2 6.2 0 0 1-1.8-1.1 6.8 6.8 0 0 1-1.3-1.6c-.1-.2 0-.3.1-.4l.4-.4c.1-.1.2-.2.3-.3a.3.3 0 0 0 0-.3l-.2-.4c-.1-.2-.4-.5-.6-.8-.2-.2-.4-.1-.5-.1h-.4c-.1 0-.3.1-.5.2-.2.2-.6.6-.6 1.5 0 .9.6 1.7.7 1.8.1.2 1.3 2 3.2 2.8.2.1.4.1.5.1.2 0 .4-.1.6-.2.2-.1.7-.6.8-.9.1-.2.1-.4 0-.5Z" />
@@ -139,11 +139,73 @@ function App() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(true);
+  const [animationsEnabled, setAnimationsEnabled] = useState(true);
+  const [revealed, setRevealed] = useState(() => new Set());
 
   const themeText = isDarkMode ? 'text-white' : 'text-slate-900';
   const themeTextSecondary = isDarkMode ? 'text-slate-400' : 'text-slate-600';
   const themeTextMuted = isDarkMode ? 'text-slate-300' : 'text-slate-700';
   const themeInputText = isDarkMode ? 'text-slate-100' : 'text-slate-900';
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isSmallScreen = window.innerWidth < 640;
+    if (prefersReduced || isSmallScreen) {
+      setAnimationsEnabled(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const els = Array.from(document.querySelectorAll('[data-reveal-id]'));
+
+    // helper to add to revealed set
+    const addRevealed = (id) => {
+      setRevealed((prev) => {
+        if (prev.has(id)) return prev;
+        const next = new Set(prev);
+        next.add(id);
+        return next;
+      });
+    };
+
+    // If animations disabled or no IntersectionObserver, reveal all immediately
+    if (!animationsEnabled || !('IntersectionObserver' in window)) {
+      els.forEach((el) => {
+        const id = el.dataset.revealId;
+        if (id) addRevealed(id);
+      });
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.dataset.revealId;
+            if (id) addRevealed(id);
+            obs.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+
+    els.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, [animationsEnabled]);
+
+  const revealStyle = (id, delay = '0ms') => {
+    const base = { ['--delay']: delay };
+    if (revealed.has(id)) {
+      return { ...base, opacity: 1, transform: 'translateY(0) scale(1)' };
+    }
+    return base;
+  };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -259,7 +321,7 @@ function App() {
 
       <main id="home">
         <section className="mx-auto grid max-w-6xl gap-12 px-4 py-20 sm:px-6 lg:grid-cols-[1.2fr_0.8fr] lg:px-8 lg:py-28">
-          <div className="space-y-8">
+          <div data-reveal-id="hero" style={revealStyle('hero', '0ms')} className={`space-y-8 reveal reveal-zoom`}>
             <div className={`inline-flex items-center rounded-full border px-3 py-1 text-sm font-medium ${isDarkMode ? 'border-emerald-400/30 bg-emerald-400/10 text-emerald-300' : 'border-emerald-600/30 bg-emerald-50 text-emerald-700'}`}>
               Available for freelance opportunities
             </div>
@@ -292,7 +354,7 @@ function App() {
             </div>
           </div>
 
-          <div className={`flex items-center justify-center rounded-3xl border p-4 shadow-2xl backdrop-blur transition-colors ${isDarkMode ? 'border-slate-800 bg-slate-900/70 shadow-indigo-950/40' : 'border-slate-200 bg-white shadow-slate-200/80'}`}>
+          <div data-reveal-id="hero-avatar" style={revealStyle('hero-avatar', '120ms')} className={`flex items-center justify-center rounded-3xl border p-4 shadow-2xl backdrop-blur transition-colors reveal reveal-scale`}>
             <div className={`overflow-hidden rounded-full border p-2 ${isDarkMode ? 'border-slate-700 bg-slate-950/80' : 'border-slate-200 bg-slate-100'}`}>
               <img
                 src={miImage}
@@ -323,10 +385,12 @@ function App() {
             </div>
           </div>
           <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {projects.map((project) => (
+            {projects.map((project, idx) => (
               <article
                 key={project.id}
-                className={`group rounded-3xl border p-6 shadow-lg transition duration-300 hover:-translate-y-2 ${isDarkMode ? 'border-slate-800 bg-slate-900/60 shadow-slate-950/30 hover:border-indigo-500/40' : 'border-slate-200 bg-white shadow-slate-200/60 hover:border-indigo-300 hover:shadow-md'}`}
+                data-reveal-id={`project-${project.id}`}
+                style={revealStyle(`project-${project.id}`, `${idx * 80}ms`)}
+                className={`reveal reveal-fade group rounded-3xl border p-6 shadow-lg hover:-translate-y-2 ${isDarkMode ? 'border-slate-800 bg-slate-900/60 shadow-slate-950/30 hover:border-indigo-500/40' : 'border-slate-200 bg-white shadow-slate-200/60 hover:border-indigo-300 hover:shadow-md'}`}
               >
                 <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500 to-emerald-500 text-lg font-bold text-white shadow-sm">
                   {project.id}
@@ -358,8 +422,8 @@ function App() {
             <p className={`text-sm font-semibold uppercase tracking-[0.3em] ${isDarkMode ? 'text-indigo-400' : 'text-indigo-600'}`}>Skills</p>
             <h2 className={`mt-3 text-3xl font-semibold sm:text-4xl ${themeText}`}>Core capabilities</h2>
             <div className="mt-8 grid gap-6 lg:grid-cols-3">
-              {skillGroups.map((group) => (
-                <div key={group.title} className={`rounded-2xl border p-5 ${isDarkMode ? 'border-slate-800 bg-slate-950/70' : 'border-slate-200 bg-slate-50'}`}>
+              {skillGroups.map((group, i) => (
+                <div key={group.title} data-reveal-id={`skills-${i}`} style={revealStyle(`skills-${i}`, `${i * 90}ms`)} className={`reveal reveal-scale rounded-2xl border p-5 ${isDarkMode ? 'border-slate-800 bg-slate-950/70' : 'border-slate-200 bg-slate-50'}`}>
                   <h3 className={`text-lg font-semibold ${themeText}`}>{group.title}</h3>
                   <div className="mt-4 flex flex-wrap gap-2">
                     {group.skills.map((skill) => (
@@ -384,7 +448,7 @@ function App() {
               </p>
             </div>
 
-            <form onSubmit={handleSubmit} className={`rounded-3xl border p-6 shadow-2xl ${isDarkMode ? 'border-slate-800 bg-slate-900/70 shadow-slate-950/30' : 'border-slate-200 bg-white shadow-slate-200/60'}`}>
+            <form data-reveal-id="contact" onSubmit={handleSubmit} style={revealStyle('contact', '220ms')} className={`reveal reveal-zoom rounded-3xl border p-6 shadow-2xl ${isDarkMode ? 'border-slate-800 bg-slate-900/70 shadow-slate-950/30' : 'border-slate-200 bg-white shadow-slate-200/60'}`}>
               <div className="space-y-4">
                 <div>
                   <label className={`mb-2 block text-sm font-medium ${themeTextMuted}`} htmlFor="name">Name</label>
@@ -465,6 +529,14 @@ function App() {
           </div>
         </div>
       </footer>
+      <button
+        type="button"
+        onClick={() => setAnimationsEnabled((v) => !v)}
+        aria-pressed={!animationsEnabled}
+        className={`fixed z-50 bottom-6 right-6 hidden items-center gap-2 rounded-full px-3 py-2 text-sm font-medium shadow-lg md:flex ${animationsEnabled ? 'bg-indigo-600 text-white' : 'bg-slate-200 text-slate-800'}`}
+      >
+        {animationsEnabled ? 'Disable animations' : 'Enable animations'}
+      </button>
     </div>
   );
 }
